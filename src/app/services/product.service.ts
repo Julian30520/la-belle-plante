@@ -9,6 +9,6 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   getData() {
-    return this.httpClient.get("http://localhost:3000/list_products?_page=5&_limit=9");
+    return this.httpClient.get("http://localhost:3000/list_products");
   }
 }

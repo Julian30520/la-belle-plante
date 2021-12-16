@@ -27,7 +27,10 @@ export class PageAccueilComponent implements OnInit {
 
       result.forEach(categorie => this.categories.push(categorie.charAt(0).toUpperCase() + categorie.slice(1)));
         console.log(data);
+        this.listData.length = 8;
     });
+
+    
 
     /*
     Méthode à Jeremy :
