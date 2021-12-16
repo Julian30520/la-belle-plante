@@ -31,7 +31,7 @@ export class PageAccueilComponent implements OnInit {
 
     Ou :
 
-    const listUniqueJsCategories = new Set(listAllCategories); // Permet de supprimer les doublons (le Set n'accepte pas les doublons de base)
+    const listUniqueJsCategories = [...new Set(listAllCategories)]; // Permet de supprimer les doublons (le Set n'accepte pas les doublons de base)
     */
   }
 
