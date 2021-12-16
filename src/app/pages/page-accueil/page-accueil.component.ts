@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 import * as _ from 'underscore';
-import { list_products } from '../../data';
+import { any } from 'underscore';
 
 @Component({
   selector: 'app-page-accueil',
@@ -8,21 +9,25 @@ import { list_products } from '../../data';
   styleUrls: ['./page-accueil.component.scss']
 })
 export class PageAccueilComponent implements OnInit {
-  listData = list_products;
+  listData: any;
   categories: Array<string> = [];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    let listCategorie = _.pluck(this.listData, 'product_breadcrumb_label');
-    let result = [];
 
-    for (const value of listCategorie) {
-      if(result.indexOf(value) === -1) { result.push(value); }
-    }
+    this.productService.getData().subscribe((data: any) => { 
+      this.listData = data; 
+      let listCategorie = _.pluck(this.listData, 'product_breadcrumb_label');
+      let result = [];
 
-    result.forEach(categorie => this.categories.push(categorie.charAt(0).toUpperCase() + categorie.slice(1)));
-    //this.categories.forEach(element => console.log(element));
+      for (const value of listCategorie) {
+        if(result.indexOf(value) === -1) { result.push(value); }
+      }
+
+      result.forEach(categorie => this.categories.push(categorie.charAt(0).toUpperCase() + categorie.slice(1)));
+        console.log(data);
+    });
 
     /*
     Méthode à Jeremy :
