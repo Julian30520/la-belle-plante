@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RatingStarsComponent implements OnInit {
 
-  arrayStars: Array<string> = ['star', 'star', 'star', 'star', 'star'];
+  arrayStars: {stateSelectedUser : boolean, stateHoverUser : boolean}[];
 
-  constructor() { }
+  constructor() { 
+    this.arrayStars = [];
+
+    for (let index = 0; index < 5; index++) {
+      this.arrayStars.push(
+        {
+          stateSelectedUser : false,
+          stateHoverUser : false
+        }
+      );
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -17,16 +28,34 @@ export class RatingStarsComponent implements OnInit {
   onMouseOver(index: number) {
     for (let i = 0; i < this.arrayStars.length; i++) {
       if(i <= index) {
-        this.arrayStars[i] = 'star-fill';
+        this.arrayStars[i].stateHoverUser = true;
       } else {
-        this.arrayStars[i] = 'star';
+        this.arrayStars[i].stateHoverUser = false;
       }
     }
   }
 
   onMouseLeave() {
     //this.arrayStars = ['star', 'star', 'star', 'star', 'star'];
-    this.arrayStars = this.arrayStars.map(x => x = 'star');
+    const tempTab = [];
+    for (let index = 0; index < this.arrayStars.length; index++) {
+      tempTab.push(
+        {
+          stateSelectedUser : this.arrayStars[index].stateSelectedUser,
+          stateHoverUser : this.arrayStars[index].stateSelectedUser
+        }
+      );
+    }
+    this.arrayStars = [...tempTab];
   }
 
+  onClickStar(starIndex: number) {
+    for (let i = 0; i < this.arrayStars.length ; i++) {
+      if(i <= starIndex) {
+        this.arrayStars[i].stateSelectedUser = true;
+      } else {
+        this.arrayStars[i].stateSelectedUser = false;
+      }
+    }
+  }
 }
