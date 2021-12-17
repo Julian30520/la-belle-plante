@@ -11,6 +11,7 @@ import { PageAccueilComponent } from './pages/page-accueil/page-accueil.componen
 import { FilterSideBarComponent } from './components/filter-side-bar/filter-side-bar.component';
 import { CardPlanteComponent } from './components/card-plante/card-plante.component';
 import { IconComponent } from './components/icon/icon.component';
+import { RatingStarsComponent } from './components/rating-stars/rating-stars.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { IconComponent } from './components/icon/icon.component';
     PageAccueilComponent,
     FilterSideBarComponent,
     CardPlanteComponent,
-    IconComponent
+    IconComponent,
+    RatingStarsComponent
   ],
   imports: [
     BrowserModule,
