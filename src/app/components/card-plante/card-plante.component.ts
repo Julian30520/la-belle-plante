@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card-plante',
@@ -8,13 +8,18 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 export class CardPlanteComponent implements OnInit, OnChanges {
 
   @Input() flower: any;
+  @Output() clickLike = new EventEmitter();
   
   constructor() { }
 
   ngOnInit(): void {}
 
   ngOnChanges(): void {
-    console.log(this.flower.product_url_picture);
+  }
+
+  onClickLike() {
+    console.log('click');
+    this.clickLike.emit();
   }
 
 }

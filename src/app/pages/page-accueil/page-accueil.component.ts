@@ -43,4 +43,8 @@ export class PageAccueilComponent implements OnInit {
     */
   }
 
+  onEventLike() {
+    this.productService.plantLiked$.next('');
+  }
+
 }
